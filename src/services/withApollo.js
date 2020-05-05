@@ -3,7 +3,7 @@ import ApolloClient, { InMemoryCache } from "apollo-boost";
 
 export default withApollo(({ initialState }) => {
   return new ApolloClient({
-    uri: process.env.GRAPHQL_URL,
+    uri: `${process.env.BASE_URL}/api/graphql`,
     cache: new InMemoryCache().restore(initialState || {}),
   });
 });
