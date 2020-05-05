@@ -19,6 +19,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/api/resolvers/resolvers.js"
+    "src/services/resolvers.js"
   ]
 }

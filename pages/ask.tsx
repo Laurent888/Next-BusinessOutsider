@@ -1,3 +1,4 @@
+import { withApollo } from "../src/services/client";
 import React, { useState } from "react";
 import { Container, CircularProgress, Grid } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
@@ -97,4 +98,4 @@ const GET_ASKNEWS = gql`
   }
 `;
 
-export default AskPage;
+export default withApollo(AskPage);

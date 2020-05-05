@@ -1,3 +1,4 @@
+import { withApollo } from "../src/services/client";
 import { useState } from "react";
 import { Container, Grid, CircularProgress } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
@@ -95,4 +96,4 @@ const GET_NEWS = gql`
   }
 `;
 
-export default Home;
+export default withApollo(Home);
