@@ -5,7 +5,7 @@ const link = "https://hacker-news.firebaseio.com/v0/topstories";
 
 export default withApollo(({ initialState }) => {
   return new ApolloClient({
-    uri: "http://localhost:3000/api/graphql",
+    uri: process.env.graphqlUrl,
     cache: new InMemoryCache().restore(initialState || {}),
   });
 });

@@ -2,7 +2,7 @@
 
 ### Summary
 
-This is an app which will fetch data from HackerNews API. This app as been as a practice for **Next.js** and **Apollo GraphQL**.
+This is an app which will fetch data from HackerNews API. This app as been built as a practice for **Next.js** and **Apollo GraphQL**.
 
 ### Features
 
@@ -13,3 +13,4 @@ No custom server, Apollo has been implemented using the API feature from Next.
 
 - **Next.js**
 - **Apollo Server** & **Apollo Client**
+- **Material UI**
