@@ -68,7 +68,9 @@ const NewsCard: React.FC<INewsCardProps> = (props) => {
           color="textSecondary"
           style={{ marginLeft: "5px" }}
         >
-          {`${props.comments_count} comment${props.comments_count > 0 && "s"}`}
+          {`${props.comments_count} comment${
+            props.comments_count > 0 ? "s" : ""
+          }`}
         </Typography>
         <a
           href={`${props.url}`}

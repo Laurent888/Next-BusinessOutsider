@@ -40,7 +40,7 @@ const HeroAsk = () => {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Business Ousider
+            Business Outsider
           </span>{" "}
           has answers
         </Typography>

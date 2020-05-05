@@ -51,6 +51,18 @@ const Home: React.FC = (props) => {
 
   return (
     <>
+      <img
+        src="/img/wordwidewebwoman.svg"
+        alt="woman sitting on earth"
+        style={{
+          width: "40rem",
+          height: "40rem",
+          position: "absolute",
+          top: "30%",
+          left: "-3rem",
+          zIndex: -5,
+        }}
+      />
       <Hero />
       <Container maxWidth="lg" style={{ padding: "1rem" }}>
         <Pagination
@@ -92,6 +104,7 @@ const GET_NEWS = gql`
       url
       time_ago
       points
+      comments_count
     }
   }
 `;

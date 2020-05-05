@@ -55,7 +55,7 @@ const AskPage: React.FC = () => {
     <Container maxWidth="lg">
       <HeroAsk />
       <Pagination
-        count={12}
+        count={2}
         page={page}
         onChange={handleChange}
         color="standard"
@@ -69,7 +69,7 @@ const AskPage: React.FC = () => {
       />
       <GridCard>{renderNews}</GridCard>
       <Pagination
-        count={12}
+        count={2}
         page={page}
         onChange={handleChange}
         color="standard"
