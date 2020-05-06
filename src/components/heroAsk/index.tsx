@@ -41,7 +41,7 @@ const HeroAsk = () => {
             }}
           >
             Business Outsider
-          </span>{" "}
+          </span>
           has answers
         </Typography>
       </div>

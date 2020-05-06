@@ -4,14 +4,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Chip from "@material-ui/core/Chip";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import KeyboardArrowRightOutlinedIcon from "@material-ui/icons/KeyboardArrowRightOutlined";
 
-import { FeedItem } from "../../types/types";
+import CustomCardHeader from "../cardComponents/customCardHeader";
 
 const useStyles = makeStyles({
   root: {
@@ -47,21 +44,10 @@ const NewsCard: React.FC<INewsCardProps> = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Chip
-            size="small"
-            color="primary"
-            label={props.points}
-            icon={<ThumbUpIcon />}
-          />
-        }
-        title={`by ${props.user}`}
-        subheader={props.time_ago}
-        style={{
-          background:
-            "linear-gradient(141deg, rgba(255,175,189,0.3) 0%, rgba(255,195,160,0.3) 100%)",
-        }}
+      <CustomCardHeader
+        points={props.points}
+        user={props.user}
+        time_ago={props.time_ago}
       />
       <CardContent>
         <Typography variant="subtitle1">{props.title}</Typography>

@@ -19,6 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
         color: "#666",
         cursor: "pointer",
       },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "20px",
+      },
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "35px",
+      },
     },
 
     navlinks: {
@@ -46,7 +52,7 @@ const Navbar = () => {
   return (
     <AppBar position="static" color="default">
       <Toolbar>
-        <Typography className={classes.logo} variant="h4">
+        <Typography className={classes.logo}>
           <Link href="/">
             <a style={{ color: "inherit", textDecoration: "none" }}>
               Business Outsider

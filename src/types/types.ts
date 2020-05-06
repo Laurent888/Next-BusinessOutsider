@@ -10,3 +10,13 @@ export interface FeedItem {
   url?: string;
   domain?: string;
 }
+
+export interface IComment {
+  id: number;
+  user: string;
+  time: number;
+  time_ago: string;
+  type: string;
+  content: string;
+  comments: [any];
+}

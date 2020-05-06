@@ -171,6 +171,19 @@ const Home: React.FC = (props) => {
         }}
       />
 
+      <img
+        src="/img/chat.svg"
+        alt="chat"
+        style={{
+          width: "40rem",
+          height: "40rem",
+          position: "absolute",
+          top: "50%",
+          right: "-3rem",
+          zIndex: -5,
+        }}
+      />
+
       {/* Main Content */}
       <Hero />
       <Container maxWidth="lg" style={{ padding: "1rem" }}>

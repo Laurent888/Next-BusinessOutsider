@@ -17,7 +17,7 @@ const typeDefs = gql`
     comments_count: Int!
     type: String!
     url: String!
-    domain: String!
+    domain: String
     comments: [Comment]
   }
 

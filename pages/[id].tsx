@@ -3,7 +3,14 @@ import React from "react";
 import { useRouter, NextRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import { Container, CircularProgress } from "@material-ui/core";
+import {
+  Container,
+  CircularProgress,
+  Paper,
+  Typography,
+} from "@material-ui/core";
+import SingleNews from "../src/components/singleNews";
+import SingleNewsHero from "../src/components/singleNewsHero";
 
 const PostDetails: React.FC = (props) => {
   const router: NextRouter = useRouter();
@@ -34,12 +41,30 @@ const PostDetails: React.FC = (props) => {
 
   if (error) return <p>Error...</p>;
 
-  console.log(data);
+  const singleNewsData = {
+    user: data.getSingleStory.user,
+    points: data.getSingleStory.points,
+    time_ago: data.getSingleStory.time_ago,
+    title: data.getSingleStory.title,
+    comments: data.getSingleStory.comments,
+    domain: data.getSingleStory.domain || "",
+  };
 
   return (
-    <Container maxWidth="lg">
-      <h2></h2>
-    </Container>
+    <>
+      <SingleNewsHero />
+      <Container
+        maxWidth="lg"
+        style={{
+          paddingTop: "2rem",
+          marginTop: "-20rem",
+          backgroundColor: "rgba(255,255,255,1)",
+          borderRadius: "5px",
+        }}
+      >
+        <SingleNews singleNews={singleNewsData} />
+      </Container>
+    </>
   );
 };
 
@@ -50,6 +75,7 @@ const GET_SINGLEPOST = gql`
       points
       user
       time
+      time_ago
       domain
       url
       title

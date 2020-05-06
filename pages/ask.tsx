@@ -37,6 +37,7 @@ const AskPage: React.FC = () => {
   const renderNews = data.getAskStories.map((item: FeedItem, index: number) => (
     <Grid key={index} item xs={12} md={6}>
       <NewsCard
+        id={item.id}
         title={item.title}
         user={item.user}
         time_ago={item.time_ago}
@@ -52,42 +53,71 @@ const AskPage: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="lg">
-      <HeroAsk />
-      <Pagination
-        count={2}
-        page={page}
-        onChange={handleChange}
-        color="standard"
-        size="large"
+    <>
+      {/* Backgroumd Image */}
+      <img
+        src="/img/wordwidewebwoman.svg"
+        alt="woman sitting on earth"
         style={{
-          marginTop: "1rem",
-          marginBottom: "2rem",
-          display: "flex",
-          justifyContent: "center",
+          width: "40rem",
+          height: "40rem",
+          position: "absolute",
+          top: "30%",
+          left: "-3rem",
+          zIndex: -5,
         }}
       />
-      <GridCard>{renderNews}</GridCard>
-      <Pagination
-        count={2}
-        page={page}
-        onChange={handleChange}
-        color="standard"
-        size="large"
+
+      <img
+        src="/img/chat.svg"
+        alt="chat"
         style={{
-          marginTop: "1rem",
-          marginBottom: "2rem",
-          display: "flex",
-          justifyContent: "center",
+          width: "40rem",
+          height: "40rem",
+          position: "absolute",
+          top: "50%",
+          right: "-3rem",
+          zIndex: -5,
         }}
       />
-    </Container>
+      <Container maxWidth="lg">
+        <HeroAsk />
+        <Pagination
+          count={2}
+          page={page}
+          onChange={handleChange}
+          color="standard"
+          size="large"
+          style={{
+            marginTop: "1rem",
+            marginBottom: "2rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        />
+        <GridCard>{renderNews}</GridCard>
+        <Pagination
+          count={2}
+          page={page}
+          onChange={handleChange}
+          color="standard"
+          size="large"
+          style={{
+            marginTop: "1rem",
+            marginBottom: "2rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        />
+      </Container>
+    </>
   );
 };
 
 const GET_ASKNEWS = gql`
   query($page: Int!) {
     getAskStories(page: $page) {
+      id
       title
       user
       url
