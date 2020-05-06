@@ -36,6 +36,7 @@ interface INewsCardProps {
   time_ago: string;
   points?: number | null;
   comments_count: number;
+  clicked?: (url?: string) => void;
 }
 
 const NewsCard: React.FC<INewsCardProps> = (props) => {
@@ -72,19 +73,18 @@ const NewsCard: React.FC<INewsCardProps> = (props) => {
             props.comments_count > 0 ? "s" : ""
           }`}
         </Typography>
-        <a
-          href={`${props.url}`}
-          target="_blank"
-          style={{ textDecoration: "none", marginLeft: "auto" }}
-        >
+        {props.clicked && (
           <Button
             variant="outlined"
             size="small"
             endIcon={<KeyboardArrowRightOutlinedIcon />}
+            onClick={() => {
+              props.clicked && props.clicked(props.url);
+            }}
           >
             Learn More
           </Button>
-        </a>
+        )}
       </CardActions>
     </Card>
   );
