@@ -48,7 +48,7 @@ const Home: React.FC = (props) => {
   const classes = useStyles();
 
   const { loading, error, data } = useQuery(GET_NEWS, { variables: { page } });
-
+  console.log(data);
   if (loading)
     return (
       <div

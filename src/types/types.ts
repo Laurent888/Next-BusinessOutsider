@@ -13,7 +13,7 @@ export interface FeedItem {
 
 export interface IComment {
   id: number;
-  user: string;
+  user?: string | null;
   time: number;
   time_ago: string;
   type: string;
