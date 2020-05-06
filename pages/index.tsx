@@ -92,6 +92,7 @@ const Home: React.FC = (props) => {
   const renderNews = data.getNewStories.map((item: FeedItem, index: number) => (
     <Grid key={index} item xs={12} md={6}>
       <NewsCard
+        id={item.id}
         title={item.title}
         user={item.user}
         time_ago={item.time_ago}
@@ -207,6 +208,7 @@ const Home: React.FC = (props) => {
 const GET_NEWS = gql`
   query($page: Int!) {
     getNewStories(page: $page) {
+      id
       title
       user
       url

@@ -12,6 +12,15 @@ import Link from "next/link";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    logo: {
+      fontFamily: "serif",
+      textDecoration: "none",
+      "&:hover": {
+        color: "#666",
+        cursor: "pointer",
+      },
+    },
+
     navlinks: {
       display: "flex",
       justifyContent: "center",
@@ -37,8 +46,12 @@ const Navbar = () => {
   return (
     <AppBar position="static" color="default">
       <Toolbar>
-        <Typography variant="h5" style={{ fontFamily: "serif" }}>
-          Business Outsider
+        <Typography className={classes.logo} variant="h4">
+          <Link href="/">
+            <a style={{ color: "inherit", textDecoration: "none" }}>
+              Business Outsider
+            </a>
+          </Link>
         </Typography>
         <Box className={classes.navlinks}>
           <Typography variant="h6">

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -15,6 +16,7 @@ import { FeedItem } from "../../types/types";
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    backgroundColor: "rgba(250,250,250,.95)",
   },
   bullet: {
     display: "inline-block",
@@ -30,6 +32,7 @@ const useStyles = makeStyles({
 });
 
 interface INewsCardProps {
+  id?: number;
   title: string;
   user?: string | null;
   url?: string;
@@ -64,15 +67,25 @@ const NewsCard: React.FC<INewsCardProps> = (props) => {
         <Typography variant="subtitle1">{props.title}</Typography>
       </CardContent>
       <CardActions>
-        <Typography
-          variant="subtitle2"
-          color="textSecondary"
-          style={{ marginLeft: "5px" }}
-        >
-          {`${props.comments_count} comment${
-            props.comments_count > 0 ? "s" : ""
-          }`}
-        </Typography>
+        <Link href="/[id]" as={`/${props.id}`}>
+          <a
+            style={{
+              marginLeft: "5px",
+              marginRight: "auto",
+              textDecoration: "none",
+            }}
+          >
+            <Typography
+              style={{ textTransform: "capitalize", fontSize: "14px" }}
+              color="textSecondary"
+            >
+              {`${props.comments_count} comment${
+                props.comments_count > 0 ? "s" : ""
+              }`}
+            </Typography>
+          </a>
+        </Link>
+
         {props.clicked && (
           <Button
             variant="outlined"
