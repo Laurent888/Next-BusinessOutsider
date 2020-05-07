@@ -1,4 +1,6 @@
+// Imports
 import axios from "axios";
+import { auth } from "../services/firebase/firebase";
 
 const instance = axios.create({
   baseURL: "https://api.hnpwa.com/v0",
@@ -20,6 +22,40 @@ const resolvers = {
       const fetchedStory = await instance.get(`/item/${id}.json`);
 
       return fetchedStory.data;
+    },
+  },
+  Mutation: {
+    createUser: async (_, { input }, context) => {
+      const { name, email, password } = input;
+      try {
+        const res = await auth.createUserWithEmailAndPassword(email, password);
+        await res.user.updateProfile({ displayName: name });
+
+        return { error: "", token: "Profile created successfully" };
+      } catch (error) {
+        return { token: "", error: error.message };
+      }
+    },
+    login: async (_, { email, password }, context) => {
+      try {
+        const res = await auth.signInWithEmailAndPassword(email, password);
+        const token = await res.user.getIdToken();
+
+        const id = await res.user.uid;
+        const displayName = await res.user.displayName;
+
+        const user = {
+          email,
+          id,
+          name: displayName,
+        };
+
+        console.log(user);
+
+        return { error: "", token, user };
+      } catch (error) {
+        return { token: "", error: error.message, user: null };
+      }
     },
   },
 };

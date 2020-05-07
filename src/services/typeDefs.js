@@ -7,6 +7,28 @@ const typeDefs = gql`
     getSingleStory(id: Int): Story
   }
 
+  type Mutation {
+    createUser(input: CreateUserInput): ReturnMessage!
+    login(email: String!, password: String!): ReturnMessageLogin!
+  }
+
+  type ReturnMessage {
+    token: String
+    error: String
+  }
+
+  type ReturnMessageLogin {
+    token: String
+    error: String
+    user: User
+  }
+
+  input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+  }
+
   type Story {
     id: Int!
     title: String!
@@ -29,6 +51,12 @@ const typeDefs = gql`
     type: String!
     content: String!
     comments: [Comment]
+  }
+
+  type User {
+    id: ID!
+    name: String!
+    email: String!
   }
 `;
 

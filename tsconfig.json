@@ -19,6 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/services/resolvers.js"
+    "src/services/resolvers.js",
+    "src/components/form/customInput/index.js"
   ]
 }

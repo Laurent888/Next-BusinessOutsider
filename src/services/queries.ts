@@ -48,3 +48,26 @@ export const GET_ASKNEWS = gql`
     }
   }
 `;
+
+export const CREATE_USER = gql`
+  mutation($name: String!, $email: String!, $password: String!) {
+    createUser(input: { name: $name, email: $email, password: $password }) {
+      token
+      error
+    }
+  }
+`;
+
+export const LOGIN = gql`
+  mutation($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      error
+      user {
+        id
+        name
+        email
+      }
+    }
+  }
+`;
