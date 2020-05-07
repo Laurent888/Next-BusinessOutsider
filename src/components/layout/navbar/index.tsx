@@ -1,4 +1,8 @@
+// IMPORTS
 import React from "react";
+import Link from "next/link";
+
+// UI IMPORTS
 import {
   AppBar,
   Toolbar,
@@ -8,7 +12,6 @@ import {
   Theme,
   Box,
 } from "@material-ui/core";
-import Link from "next/link";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

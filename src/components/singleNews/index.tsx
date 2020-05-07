@@ -1,4 +1,7 @@
+// IMPORTS
 import React from "react";
+
+// UI IMPORTS
 import {
   Typography,
   createStyles,
@@ -6,10 +9,10 @@ import {
   Card,
   Grid,
   CardContent,
-  CardActions,
 } from "@material-ui/core";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 
+// COMPONENTS IMPORTS
 import CustomCardHeader from "../cardComponents/customCardHeader";
 import CommentCard from "./CommentCard";
 

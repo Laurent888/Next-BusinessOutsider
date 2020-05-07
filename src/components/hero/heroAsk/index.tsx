@@ -1,4 +1,7 @@
+//IMPORTD
 import React from "react";
+
+// UI IMPORTS
 import { makeStyles, createStyles, Theme, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>

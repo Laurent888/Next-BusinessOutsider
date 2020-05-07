@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../banner";
+import Banner from "./banner";
 import { Box } from "@material-ui/core";
 
 const Hero = () => {

@@ -1,4 +1,7 @@
+// IMPORTS
 import React from "react";
+
+// UI IMPORTS
 import CardHeader from "@material-ui/core/CardHeader";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import Chip from "@material-ui/core/Chip";
