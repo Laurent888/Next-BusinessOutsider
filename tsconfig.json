@@ -20,6 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/services/resolvers.js",
-    "src/components/form/customInput/index.js"
+    "src/components/form/customInput/index.js",
+    "src/services/firebase/admin.js"
   ]
 }

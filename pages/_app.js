@@ -12,7 +12,7 @@ import Layout from "../src/components/layout";
 
 const MyApp = (props) => {
   const { Component, pageProps, cookie } = props;
-  console.log(cookie);
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -31,7 +31,7 @@ const MyApp = (props) => {
         />
       </Head>
       <AuthContext.Provider
-        value={{ auth: cookie === {} ? cookie.auth : null }}
+        value={{ auth: cookie !== {} ? cookie.auth : null }}
       >
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

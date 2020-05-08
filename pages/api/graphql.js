@@ -6,7 +6,6 @@ const server = new ApolloServer({
   schema,
   context: async ({ req, res }) => {
     const me = await getMe(req);
-    console.log(me, "from CONTEXT");
     return { req, res, me };
   },
 });
