@@ -1,5 +1,6 @@
 // Imports
 import axios from "axios";
+import { AuthenticationError } from "apollo-server-micro";
 import { auth } from "../services/firebase/firebase";
 
 const instance = axios.create({
@@ -22,6 +23,12 @@ const resolvers = {
       const fetchedStory = await instance.get(`/item/${id}.json`);
 
       return fetchedStory.data;
+    },
+    getMe: async (_, args, { me }) => {
+      if (!me) {
+        throw new AuthenticationError("Authentication error");
+      }
+      return me;
     },
   },
   Mutation: {
@@ -49,8 +56,6 @@ const resolvers = {
           id,
           name: displayName,
         };
-
-        console.log(user);
 
         return { error: "", token, user };
       } catch (error) {

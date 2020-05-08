@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import nextCookies from "next-cookies";
 
 import theme from "../src/styles/theme";
+import AuthContext from "../src/context/authContext";
 
 import Layout from "../src/components/layout";
 
 const MyApp = (props) => {
-  const { Component, pageProps } = props;
-
+  const { Component, pageProps, cookie } = props;
+  console.log(cookie);
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -28,16 +30,32 @@ const MyApp = (props) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <AuthContext.Provider
+        value={{ auth: cookie === {} ? cookie.auth : null }}
+      >
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </AuthContext.Provider>
     </React.Fragment>
   );
+};
+
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const cookie = nextCookies(ctx);
+
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+
+  return {
+    pageProps,
+    cookie,
+  };
 };
 
 export default MyApp;

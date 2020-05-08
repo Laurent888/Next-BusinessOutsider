@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import { LOGIN } from "../../../services/queries";
-import { loginSetUserLocalStorageAndCookie } from "../../auth/actions/auth";
+import { loginSetUserLocalStorageAndCookie } from "../../../utils/utils";
 
 const SigninForm = () => {
   const [message, setMessage] = useState<string | null>(null);
@@ -40,8 +40,6 @@ const SigninForm = () => {
           },
         });
 
-        setSubmitting(false);
-
         if (res.data.login.error !== "") {
           setMessage(res.data.login.error);
           setTimeout(() => {
@@ -49,16 +47,12 @@ const SigninForm = () => {
           }, 4000);
           return;
         }
-
+        setSubmitting(false);
         setTimeout(() => {
           resetForm({});
         }, 300);
-        console.log(res.data);
-        // Set token to local storage and cookie
-        loginSetUserLocalStorageAndCookie(
-          res.data.login.token,
-          res.data.login.user
-        );
+        // // Set token to local storage and cookie
+        loginSetUserLocalStorageAndCookie(res.data.login.token);
       }}
     >
       <Form
@@ -75,7 +69,7 @@ const SigninForm = () => {
           size="large"
           variant="contained"
           color="primary"
-          style={{ marginTop: "1.5rem" }}
+          style={{ marginTop: "1.5rem", width: "20rem" }}
         >
           Login
         </Button>

@@ -29,3 +29,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+
+./businessoutsider-c222e-firebase-adminsdk-kez8c-271d44e2a0.json

@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient, InMemoryCache } from "apollo-boost";
+import { setContext } from "apollo-link-context";
 
 let globalApolloClient = null;
 
@@ -127,10 +128,21 @@ function createApolloClient(initialState = {}) {
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
   return new ApolloClient({
     ssrMode,
-    link: createIsomorphLink(),
+    link: authLink.concat(createIsomorphLink()),
     cache,
   });
 }
+
+const authLink = setContext(() => {
+  if (process.browser) {
+    const token = localStorage.getItem("token");
+    return {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+    };
+  }
+});
 
 function createIsomorphLink() {
   if (typeof window === "undefined") {

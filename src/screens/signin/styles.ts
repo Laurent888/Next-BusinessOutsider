@@ -6,6 +6,7 @@ export default makeStyles((theme: Theme) =>
       width: "100%",
       height: "100vh",
       position: "relative",
+      overflow: "hidden",
     },
     bcgImage: {
       position: "absolute",
@@ -21,9 +22,14 @@ export default makeStyles((theme: Theme) =>
       top: 0,
       left: 0,
       height: "100%",
-      width: "50%",
+      width: "40%",
+      minWidth: "500px",
       background: "#fff",
-      paddingTop: "8rem",
+      boxShadow: "3px 0 10px rgba(0,0,0,0.3)",
+      zIndex: 0,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
     },
   })
 );

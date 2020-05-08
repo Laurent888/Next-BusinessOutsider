@@ -1,4 +1,4 @@
-import Cookie from "js-cookie";
+import firebaseAdmin from "../../../services/firebase/admin";
 
 interface IUser {
   id: string;
@@ -6,14 +6,25 @@ interface IUser {
   name: string;
 }
 
-export const loginSetUserLocalStorageAndCookie = (
-  token: string,
-  user: IUser
-) => {
-  if (process.browser) {
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
+export const getMe = async (req: any) => {
+  try {
+    if (req.headers.authorization) {
+      const token = req.headers.authorization.split(" ")[1];
 
-    Cookie.set("auth", { token, user });
+      const res = await firebaseAdmin.auth().verifyIdToken(token);
+      return {
+        id: res.uid,
+        name: res.name,
+        email: res.email,
+      };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    if (error.errorInfo.code === "auth/id-token-expired") {
+      console.log(error.errorInfo.message);
+      return null;
+    }
+    console.log(error);
   }
 };

@@ -5,6 +5,7 @@ const typeDefs = gql`
     getNewStories(page: Int): [Story]
     getAskStories(page: Int): [Story]
     getSingleStory(id: Int): Story
+    getMe: User
   }
 
   type Mutation {
@@ -54,6 +55,12 @@ const typeDefs = gql`
   }
 
   type User {
+    id: ID!
+    name: String!
+    email: String!
+  }
+
+  type Me {
     id: ID!
     name: String!
     email: String!
