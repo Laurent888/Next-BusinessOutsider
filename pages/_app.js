@@ -31,7 +31,7 @@ const MyApp = (props) => {
         />
       </Head>
       <AuthContext.Provider
-        value={{ auth: cookie !== {} ? cookie.auth : null }}
+        value={{ auth: cookie !== {} && cookie ? cookie.auth : null }}
       >
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
