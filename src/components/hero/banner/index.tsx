@@ -11,12 +11,24 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        padding: "2rem",
+      },
+    },
+    header: {
+      fontFamily: "serif",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "37px",
+      },
     },
     hacker: {
       fontSize: "40px",
       fontStyle: "italic",
       fontWeight: "lighter",
       color: "#444",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "20px",
+      },
     },
   })
 );
@@ -27,10 +39,10 @@ const Banner = () => {
   return (
     <Paper elevation={3} className={classes.paper}>
       <Typography
+        className={classes.header}
         variant="h2"
         component="h1"
         gutterBottom
-        style={{ fontFamily: "serif" }}
       >
         Business Outsider
       </Typography>

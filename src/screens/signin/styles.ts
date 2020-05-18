@@ -16,6 +16,9 @@ export default makeStyles((theme: Theme) =>
       height: "100%",
       objectFit: "cover",
       objectPosition: "center",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
     formWindow: {
       position: "absolute",
@@ -30,6 +33,11 @@ export default makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+      [theme.breakpoints.down("sm")]: {
+        position: "relative",
+        minWidth: "100%",
+        width: "100%",
+      },
     },
   })
 );

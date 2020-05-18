@@ -112,11 +112,11 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Typography variant="h6">
+              {/* <Typography variant="h6">
                 <Link href="/signup">
                   <a className={classes.link}>Register</a>
                 </Link>
-              </Typography>
+              </Typography> */}
               <Typography variant="h6">
                 <Link href="/signin">
                   <a className={classes.link}>Login</a>

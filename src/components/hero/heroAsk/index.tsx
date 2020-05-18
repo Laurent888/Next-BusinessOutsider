@@ -13,15 +13,37 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
       display: "flex",
       justifyContent: "space-evenly",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+      },
     },
     image: {
       width: "100%",
       height: "100%",
+      [theme.breakpoints.down("sm")]: {
+        height: "50%",
+      },
     },
     text: {
       width: "100%",
       display: "flex",
       alignItems: "center",
+    },
+    header: {
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "2rem",
+      },
+    },
+    spanText: {
+      fontFamily: "serif",
+      fontSize: "5rem",
+      background:
+        "-webkit-linear-gradient(95deg, rgba(25,130,232,1) 0%, rgba(74,238,250,1) 100%)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "3rem",
+      },
     },
   })
 );
@@ -31,20 +53,14 @@ const HeroAsk = () => {
   return (
     <div className={classes.hero}>
       <div className={classes.text}>
-        <Typography variant="h3" component="h2" color="textSecondary">
+        <Typography
+          className={classes.header}
+          variant="h3"
+          component="h2"
+          color="textSecondary"
+        >
           You have a question ?{" "}
-          <span
-            style={{
-              fontFamily: "serif",
-              fontSize: "5rem",
-              background:
-                "-webkit-linear-gradient(95deg, rgba(25,130,232,1) 0%, rgba(74,238,250,1) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Business Outsider{" "}
-          </span>
+          <span className={classes.spanText}>Business Outsider </span>
           has answers
         </Typography>
       </div>

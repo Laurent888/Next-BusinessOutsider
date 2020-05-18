@@ -39,6 +39,30 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.paper,
       borderRadius: "5px",
     },
+    firstBcgImage: {
+      width: "40rem",
+      height: "40rem",
+      position: "absolute",
+      top: "30%",
+      left: "-3rem",
+      zIndex: -5,
+      [theme.breakpoints.down("sm")]: {
+        top: "10%",
+      },
+    },
+    secondBcgImage: {
+      width: "40rem",
+      height: "40rem",
+      position: "absolute",
+      top: "50%",
+      right: "-3rem",
+      zIndex: -5,
+      [theme.breakpoints.down("sm")]: {
+        top: "30%",
+        width: "30rem",
+        height: "30rem",
+      },
+    },
   })
 );
 
@@ -163,30 +187,12 @@ const Home: React.FC = (props) => {
 
       {/* Backgroumd Image */}
       <img
+        className={classes.firstBcgImage}
         src="/img/wordwidewebwoman.svg"
         alt="woman sitting on earth"
-        style={{
-          width: "40rem",
-          height: "40rem",
-          position: "absolute",
-          top: "30%",
-          left: "-3rem",
-          zIndex: -5,
-        }}
       />
 
-      <img
-        src="/img/chat.svg"
-        alt="chat"
-        style={{
-          width: "40rem",
-          height: "40rem",
-          position: "absolute",
-          top: "50%",
-          right: "-3rem",
-          zIndex: -5,
-        }}
-      />
+      <img className={classes.secondBcgImage} src="/img/chat.svg" alt="chat" />
 
       {/* Main Content */}
       <Hero />

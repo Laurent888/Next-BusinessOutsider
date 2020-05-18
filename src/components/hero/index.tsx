@@ -1,17 +1,32 @@
 import React from "react";
 import Banner from "./banner";
-import { Box } from "@material-ui/core";
+import { Box, makeStyles, createStyles, Theme } from "@material-ui/core";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "100%",
+      height: "600px",
+      backgroundColor: "#eee",
+      position: "relative",
+      [theme.breakpoints.down("sm")]: {},
+    },
+    box: {
+      position: "absolute",
+      top: "5rem",
+      left: "10%",
+      [theme.breakpoints.down("sm")]: {
+        left: "5%",
+      },
+    },
+  })
+);
 
 const Hero = () => {
+  const classes = useStyles();
+
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "600px",
-        backgroundColor: "#eee",
-        position: "relative",
-      }}
-    >
+    <div className={classes.root}>
       <img
         src="/img/landscape.jpg"
         alt="landscape"
@@ -22,7 +37,7 @@ const Hero = () => {
           objectPosition: "center",
         }}
       />
-      <Box style={{ position: "absolute", top: "5rem", left: "10%" }}>
+      <Box className={classes.box}>
         <Banner />
       </Box>
     </div>
